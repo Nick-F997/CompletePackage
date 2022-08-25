@@ -204,7 +204,7 @@ def read_txt_test_data(filename):
     for i in range(1, len(lines)):
         print(lines[i])
         line = lines[i].split()
-        tmp  = DataStruct(float(line[0]), float(line[1]), float(line[2]), line[4])
+        tmp = DataStruct(float(line[0]), float(line[1]), float(line[2]), line[4])
         tmp.set_chainage(float(line[3]))
         tmp.set_ID(line[6])  # MOVE TO 6 IF PROFILE HAS FEATURE CODE
         output.append(tmp)

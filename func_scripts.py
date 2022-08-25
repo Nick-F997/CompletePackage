@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 # import time
 import tkinter as t_k     # from tkinter import Tk for Python 3.x
-from tkinter.filedialog import askopenfilename
-from tkinter.filedialog import askdirectory
+# from tkinter.filedialog import askopenfilename
+# from tkinter.filedialog import askdirectory
 from delivery_splitter import *
 
 inp = None
