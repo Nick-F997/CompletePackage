@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 # import itertools
 # import time
 import tkinter as tk
+import pandas as pd
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
 
@@ -467,7 +468,11 @@ def bringDownProfile(prof_data, ID, start_chain, end_chain, decrease_factor):
         if d.id == ID and start_chain <= d.chainage <= end_chain:
             d.elev = d.elev - decrease_factor + (uniform(-1, 1) / 10)
 
-
-
-
+def addHeaders():
+    tk.Tk().withdraw()
+    filename = askopenfilename(title='Select files to add headers to')
+    for file in filename:
+        x = pd.read_csv(file, header=None)
+        x.rename(columns={0: 'Easting', 1: 'Northing', 2: 'Elevation_OD', 3: 'FC'})
+        x.to_csv(file, index=False)
 

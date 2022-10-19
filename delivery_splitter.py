@@ -44,6 +44,7 @@ def delivery_main():
     # input("PLEASE STOP ME")
     find_structures(data)  # divides the structures up.
     grid_division(data, 1000)  # Divides the beach into a grid (change the number for different sized grids!!! although OS ref will be wrong)
+    addHeaders() # YOU CAN TEST ME, IF I DON'T WORK PUT A # IN FRONT OF THE LINE
     end = time.time()
     bigboy = end - start  # timing variable
 
