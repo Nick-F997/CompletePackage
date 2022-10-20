@@ -9,6 +9,7 @@ import tkinter as tk
 import pandas as pd
 from tkinter.filedialog import askopenfilename
 from tkinter.filedialog import askdirectory
+import os
 
 # CHANGE BELOW PER EACH PC
 PATH = f"Z:\\PythonProcess\\AGsurveys\\TESTDATA\\in\\"
@@ -20,7 +21,7 @@ DY = 1000
 
 def get_output_path():
     tk.Tk().withdraw()
-    op = askdirectory()
+    op = askdirectory(title='Select your output folder')
     op += "/"
     return op
 
@@ -214,7 +215,7 @@ def read_txt_test_data(filename):
 
 def get_input_file():
     tk.Tk().withdraw()
-    filename = askopenfilename()
+    filename = askopenfilename(title='Please select the baseline file (xxxxxxxxtb.csv)')
     name_list = filename.split("/")
     name = name_list[-1]
     print(name)
@@ -470,9 +471,15 @@ def bringDownProfile(prof_data, ID, start_chain, end_chain, decrease_factor):
 
 def addHeaders():
     tk.Tk().withdraw()
-    filename = askopenfilename(title='Select files to add headers to')
-    for file in filename:
-        x = pd.read_csv(file, header=None)
-        x.rename(columns={0: 'Easting', 1: 'Northing', 2: 'Elevation_OD', 3: 'FC'})
-        x.to_csv(file, index=False)
+    filename = askdirectory(title='Select files to add headers to')
+    print(filename)
+
+    files = [f for f in os.listdir(filename)]
+    print(files)
+    for file in files:
+        x = pd.read_csv(f"{filename}/{file}", header=None, names=['Easting', 'Northing', 'Elevation_OD', 'FC'])
+        print(x)
+        #input()
+        x.to_csv(f"{filename}/{file}", index=False)
+    print("File headers added")
 
